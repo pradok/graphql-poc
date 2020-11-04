@@ -18,7 +18,7 @@ export default class CreateQuestions implements Seeder {
             return question;
           })
           .createMany(2);
-        survey.questions = questions;
+        survey.squestions = questions;
         return survey;
       })
       .createMany(3);
