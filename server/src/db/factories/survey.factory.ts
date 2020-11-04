@@ -1,6 +1,6 @@
 import * as Faker from "faker";
 import { define } from "typeorm-seeding";
-import { Survey } from "../entity/Survey.entity";
+import { Survey } from "../../entity/Survey.entity";
 
 define(Survey, (faker: typeof Faker) => {
   const survey = new Survey();
