@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  JoinTable,
   ManyToMany,
   ManyToOne,
   OneToOne,
@@ -38,12 +39,13 @@ export class Question extends BaseEntity {
   @JoinColumn()
   createdBy: User;
 
-  @Field()
+  // @Field()
   @OneToOne(() => QuestionType)
   @JoinColumn()
   questionType: QuestionType;
 
-  @Field(() => Option)
-  @ManyToMany(() => Option, (option) => option.questions)
+  @Field(() => [Option])
+  @ManyToMany(() => Option)
+  @JoinTable()
   options: Option[];
 }

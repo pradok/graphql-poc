@@ -1,24 +1,14 @@
-import { Field } from "type-graphql";
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from "typeorm";
-import { Question } from "./Question.entity";
+import { Field, ID, ObjectType } from "type-graphql";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@ObjectType()
 @Entity()
 export class Option extends BaseEntity {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
 
   @Field()
   @Column()
   text: string;
-
-  @ManyToMany(() => Question, (question) => question.options)
-  @JoinTable()
-  questions: Question;
 }
