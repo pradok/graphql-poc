@@ -3,12 +3,12 @@ import { Question } from "../entity/Question.entity";
 import { Survey } from "../entity/Survey.entity";
 
 const batchQuestions = async (surveyIds: readonly number[]) => {
-  console.log("surveyIds", surveyIds);
   const surveyQuestions = await Survey.find({
     join: {
       alias: "survey",
       leftJoinAndSelect: {
         squestions: "survey.squestions",
+        createdBy: "squestions.createdBy",
         options: "squestions.options",
       },
     },
