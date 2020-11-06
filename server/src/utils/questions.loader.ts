@@ -8,7 +8,7 @@ const batchQuestions = async (surveyIds: readonly number[]) => {
       alias: "survey",
       leftJoinAndSelect: {
         squestions: "survey.squestions",
-        createdBy: "squestions.createdBy",
+        createdByUser: "squestions.createdByUser",
         options: "squestions.options",
       },
     },

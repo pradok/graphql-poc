@@ -20,7 +20,7 @@ export const surveyQuestions = async () => {
   const question = await Question.create({
     title: "How many devs does it take to change a lightbulb?",
     subTitle: "How many devs does it take to change a lightbulb?",
-    createdBy: user,
+    createdByUser: user,
     options: [option1, option2, option3],
   }).save();
 

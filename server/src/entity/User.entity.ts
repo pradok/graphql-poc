@@ -22,6 +22,6 @@ export class User extends BaseEntity {
   @Column()
   lastName: string;
 
-  @OneToMany(() => Question, (question) => question.createdBy)
+  @OneToMany(() => Question, (question) => question.createdByUser)
   questions: Question[];
 }

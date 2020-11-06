@@ -11,7 +11,7 @@ export default class CreateQuestions implements Seeder {
       .map(async (survey: Survey) => {
         const questions = await factory(Question)()
           .map(async (question: Question) => {
-            question.createdBy = user;
+            question.createdByUser = user;
             const options = await factory(Option)().createMany(5);
             question.options = options;
 

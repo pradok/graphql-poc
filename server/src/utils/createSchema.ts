@@ -1,7 +1,7 @@
 import { buildSchema } from "type-graphql";
-import { SurveyResolver } from "../modules/Survey/Survey.resolver";
+import { QuestionResolver, SurveyResolver } from "../modules/Survey";
 
 export const createSchema = () =>
   buildSchema({
-    resolvers: [SurveyResolver],
+    resolvers: [SurveyResolver, QuestionResolver],
   });

@@ -34,10 +34,9 @@ export class Question extends BaseEntity {
   @CreateDateColumn({ type: "timestamp" })
   createdDateTime: string;
 
-  @Field()
   @ManyToOne(() => User, (user) => user.questions)
   @JoinColumn()
-  createdBy: User;
+  createdByUser: User;
 
   // @Field()
   @OneToOne(() => QuestionType)
