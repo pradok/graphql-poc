@@ -1,0 +1,6 @@
+query Surveys {
+  surveys {
+    id
+    name
+  }
+}

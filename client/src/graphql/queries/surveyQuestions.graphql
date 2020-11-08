@@ -1,0 +1,16 @@
+query SurveyQuestions {
+  surveys {
+    id
+    name
+    questions {
+      id
+      title
+      subTitle
+      createdBy
+      options {
+        id
+        text
+      }
+    }
+  }
+}
