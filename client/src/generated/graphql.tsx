@@ -13,11 +13,17 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  surveys: Array<Survey>;
+  surveys?: Maybe<Array<Survey>>;
+  survey?: Maybe<Survey>;
 };
 
 
 export type QuerySurveysArgs = {
+  id?: Maybe<Scalars['String']>;
+};
+
+
+export type QuerySurveyArgs = {
   id?: Maybe<Scalars['String']>;
 };
 
@@ -49,10 +55,10 @@ export type SurveysQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type SurveysQuery = (
   { __typename?: 'Query' }
-  & { surveys: Array<(
+  & { surveys?: Maybe<Array<(
     { __typename?: 'Survey' }
     & Pick<Survey, 'id' | 'name'>
-  )> }
+  )>> }
 );
 
 export type SurveyQuestionsQueryVariables = Exact<{
@@ -62,7 +68,28 @@ export type SurveyQuestionsQueryVariables = Exact<{
 
 export type SurveyQuestionsQuery = (
   { __typename?: 'Query' }
-  & { surveys: Array<(
+  & { surveys?: Maybe<Array<(
+    { __typename?: 'Survey' }
+    & Pick<Survey, 'id' | 'name'>
+    & { questions: Array<(
+      { __typename?: 'Question' }
+      & Pick<Question, 'id' | 'title' | 'subTitle' | 'createdBy'>
+      & { options: Array<(
+        { __typename?: 'Option' }
+        & Pick<Option, 'id' | 'text'>
+      )> }
+    )> }
+  )>> }
+);
+
+export type SurveyByIdQuestionsQueryVariables = Exact<{
+  id?: Maybe<Scalars['String']>;
+}>;
+
+
+export type SurveyByIdQuestionsQuery = (
+  { __typename?: 'Query' }
+  & { survey?: Maybe<(
     { __typename?: 'Survey' }
     & Pick<Survey, 'id' | 'name'>
     & { questions: Array<(
@@ -154,3 +181,47 @@ export function useSurveyQuestionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOp
 export type SurveyQuestionsQueryHookResult = ReturnType<typeof useSurveyQuestionsQuery>;
 export type SurveyQuestionsLazyQueryHookResult = ReturnType<typeof useSurveyQuestionsLazyQuery>;
 export type SurveyQuestionsQueryResult = Apollo.QueryResult<SurveyQuestionsQuery, SurveyQuestionsQueryVariables>;
+export const SurveyByIdQuestionsDocument = gql`
+    query surveyByIdQuestions($id: String) {
+  survey(id: $id) {
+    id
+    name
+    questions {
+      id
+      title
+      subTitle
+      createdBy
+      options {
+        id
+        text
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useSurveyByIdQuestionsQuery__
+ *
+ * To run a query within a React component, call `useSurveyByIdQuestionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSurveyByIdQuestionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSurveyByIdQuestionsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useSurveyByIdQuestionsQuery(baseOptions?: Apollo.QueryHookOptions<SurveyByIdQuestionsQuery, SurveyByIdQuestionsQueryVariables>) {
+        return Apollo.useQuery<SurveyByIdQuestionsQuery, SurveyByIdQuestionsQueryVariables>(SurveyByIdQuestionsDocument, baseOptions);
+      }
+export function useSurveyByIdQuestionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SurveyByIdQuestionsQuery, SurveyByIdQuestionsQueryVariables>) {
+          return Apollo.useLazyQuery<SurveyByIdQuestionsQuery, SurveyByIdQuestionsQueryVariables>(SurveyByIdQuestionsDocument, baseOptions);
+        }
+export type SurveyByIdQuestionsQueryHookResult = ReturnType<typeof useSurveyByIdQuestionsQuery>;
+export type SurveyByIdQuestionsLazyQueryHookResult = ReturnType<typeof useSurveyByIdQuestionsLazyQuery>;
+export type SurveyByIdQuestionsQueryResult = Apollo.QueryResult<SurveyByIdQuestionsQuery, SurveyByIdQuestionsQueryVariables>;

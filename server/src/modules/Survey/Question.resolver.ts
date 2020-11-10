@@ -10,4 +10,9 @@ export class QuestionResolver {
     } = question;
     return `${firstName} ${lastName}`;
   }
+
+  @FieldResolver(() => String)
+  createdDateTime(@Root() question: Question) {
+    return new Date(question.createdDateTime).toUTCString();
+  }
 }

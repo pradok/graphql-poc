@@ -27,3 +27,22 @@ export const surveyQuestions = gql`
     }
   }
 `;
+
+export const surveyByIdQuestions = gql`
+  query surveyByIdQuestions($id: String) {
+    survey(id: $id) {
+      id
+      name
+      questions {
+        id
+        title
+        subTitle
+        createdBy
+        options {
+          id
+          text
+        }
+      }
+    }
+  }
+`;

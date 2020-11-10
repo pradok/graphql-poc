@@ -8,7 +8,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
-import { useSurveyQuestionsQuery } from "generated/graphql";
+import { useSurveyByIdQuestionsQuery } from "generated/graphql";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -29,7 +29,7 @@ export const SurveyQuestions: React.FC = () => {
   };
 
   const { id } = useParams<{ id: string }>();
-  const { data, error, loading } = useSurveyQuestionsQuery({
+  const { data, error, loading } = useSurveyByIdQuestionsQuery({
     variables: { id },
   });
   if (error) {
@@ -40,8 +40,8 @@ export const SurveyQuestions: React.FC = () => {
     return <h4>Loading...</h4>;
   }
 
-  if (data) {
-    const { questions, name } = data.surveys[0];
+  if (data && data.survey) {
+    const { questions, name } = data.survey;
     return (
       <>
         <h2>{name}</h2>

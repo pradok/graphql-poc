@@ -18,7 +18,7 @@ export class SurveyResolver {
   }
 
   @Query(() => Survey, { nullable: true })
-  async survey(@Arg("id", { nullable: false }) id: string) {
+  async survey(@Arg("id", { nullable: true }) id: string) {
     const survey = await Survey.findOne({
       id: parseInt(id),
     });

@@ -18,7 +18,7 @@ export const SurveyList: React.FC = () => {
     return <h4>Loading...</h4>;
   }
 
-  if (data) {
+  if (data && data.surveys) {
     return (
       <>
         <h2>Compass Surveys</h2>
