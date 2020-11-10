@@ -23,13 +23,15 @@ beforeAll(async () => {
       title,
       subTitle,
       options: options
-        .sort((a, b) => b.id - a.id)
+        .sort((a, b) => a.id - b.id)
         .map(({ id, text }) => ({ id: `${id}`, text })),
     })
   );
 });
 afterAll(async () => {
-  await conn.close();
+  if (conn) {
+    await conn.close();
+  }
 });
 
 const surveysQuery = `
@@ -62,7 +64,7 @@ const surveysQuestionsQuery = `
 
 const surveyIdQuestionsQuery = `
  {
-  surveys(id: "1") {
+  survey(id:"1") {
     id
     name
     questions {
@@ -114,20 +116,17 @@ describe("SurveyResolver", () => {
     });
   });
 
-  it("query survey by id with a question and options", async () => {
+  it("query survey by id with questions and options", async () => {
     const response = await graphQLTest({
       source: surveyIdQuestionsQuery,
     });
-
     expect(response).toMatchObject({
       data: {
-        surveys: [
-          {
-            id: `${survey.id}`,
-            name: survey.name,
-            questions: expectedQuestions,
-          },
-        ],
+        survey: {
+          id: `${survey.id}`,
+          name: survey.name,
+          questions: expectedQuestions,
+        },
       },
     });
   });

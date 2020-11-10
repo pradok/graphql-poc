@@ -14,4 +14,12 @@ export class SurveyResolver {
       return Survey.find();
     }
   }
+
+  @Query(() => Survey)
+  async survey(@Arg("id", { nullable: true }) id: string) {
+    const survey = await Survey.findOne({
+      id: parseInt(id),
+    });
+    return survey;
+  }
 }
