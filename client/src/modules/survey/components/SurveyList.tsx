@@ -20,14 +20,16 @@ export const SurveyList: React.FC = () => {
 
   if (data) {
     return (
-      <List>
-        {data.surveys.map((survey) => (
-          <Link
-            key={survey.id}
-            to={`/survey/${survey.id}`}
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            <ListItem button>
+      <>
+        <h2>Compass Surveys</h2>
+        <List>
+          {data.surveys.map((survey) => (
+            <ListItem
+              key={survey.id}
+              button
+              component={Link}
+              to={`/survey/${survey.id}`}
+            >
               <ListItemAvatar>
                 <Avatar>
                   <ImageIcon />
@@ -35,9 +37,9 @@ export const SurveyList: React.FC = () => {
               </ListItemAvatar>
               <ListItemText primary={survey.name} />
             </ListItem>
-          </Link>
-        ))}
-      </List>
+          ))}
+        </List>
+      </>
     );
   }
   return <span />;

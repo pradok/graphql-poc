@@ -10,8 +10,8 @@ export const surveys = gql`
 `;
 
 export const surveyQuestions = gql`
-  query surveyQuestions {
-    surveys {
+  query surveyQuestions($id: String) {
+    surveys(id: $id) {
       id
       name
       questions {
