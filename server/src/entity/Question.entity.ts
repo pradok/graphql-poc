@@ -38,6 +38,7 @@ export class Question extends BaseEntity {
   @JoinColumn()
   createdByUser: User;
 
+  // Todo, forgot about this, add later though has no bearing on the work done so far.
   // @Field()
   @OneToOne(() => QuestionType)
   @JoinColumn()
