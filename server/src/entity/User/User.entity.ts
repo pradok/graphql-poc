@@ -6,7 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Question } from "./Question.entity";
+import { Question } from "../Survey/Question.entity";
 
 @ObjectType()
 @Entity()

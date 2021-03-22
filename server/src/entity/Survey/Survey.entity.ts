@@ -7,7 +7,7 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Context } from "../types/Context";
+import { Context } from "../../types/Context";
 import { Question } from "./Question.entity";
 
 @ObjectType()

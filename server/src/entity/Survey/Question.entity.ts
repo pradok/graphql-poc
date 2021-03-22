@@ -8,12 +8,11 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { User } from "../User/User.entity";
 import { Option } from "./Option.entity";
 import { QuestionType } from "./QuestionType.entity";
-import { User } from "./User.entity";
 
 @ObjectType()
 @Entity()
@@ -40,7 +39,7 @@ export class Question extends BaseEntity {
 
   // Todo, forgot about this, add later though has no bearing on the work done so far.
   // @Field()
-  @OneToOne(() => QuestionType)
+  @ManyToOne(() => QuestionType)
   @JoinColumn()
   questionType: QuestionType;
 

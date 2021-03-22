@@ -1,6 +1,5 @@
 import DataLoader from "dataloader";
-import { Survey } from "../entity";
-import { Question } from "../entity/Question.entity";
+import { Question, Survey } from "../entity/Survey";
 
 const batchQuestions = async (surveyIds: readonly number[]) => {
   const surveyQuestions = await Survey.find({
