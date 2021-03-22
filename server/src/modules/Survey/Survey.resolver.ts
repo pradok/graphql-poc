@@ -1,5 +1,5 @@
 import { Arg, Query, Resolver } from "type-graphql";
-import { Survey } from "../../entity/Survey.entity";
+import { Survey } from "../../entity/Survey";
 
 @Resolver()
 export class SurveyResolver {

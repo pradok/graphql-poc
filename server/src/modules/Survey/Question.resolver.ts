@@ -1,5 +1,5 @@
 import { FieldResolver, Resolver, Root } from "type-graphql";
-import { Question } from "../../entity";
+import { Question } from "../../entity/Survey";
 
 @Resolver(() => Question)
 export class QuestionResolver {

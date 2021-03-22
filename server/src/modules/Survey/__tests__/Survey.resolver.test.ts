@@ -1,6 +1,6 @@
 import { Connection } from "typeorm";
 import { surveyQuestions } from "../../../db/mocks";
-import { Survey } from "../../../entity";
+import { Survey } from "../../../entity/Survey";
 import { connectionTest, graphQLTest } from "../../../utils/test";
 
 let conn: Connection;

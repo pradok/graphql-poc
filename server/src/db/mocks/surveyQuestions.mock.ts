@@ -1,5 +1,5 @@
 import faker from "faker";
-import { Option, Question, Survey, User } from "../../entity";
+import { Option, Question, Survey, User } from "../../entity/Survey";
 
 export const surveyQuestions = async () => {
   const gender = faker.random.number(1);
