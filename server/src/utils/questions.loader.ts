@@ -2,6 +2,7 @@ import DataLoader from "dataloader";
 import { Question, Survey } from "../entity/Survey";
 
 const batchQuestions = async (surveyIds: readonly number[]) => {
+  console.log({ surveyIds });
   const surveyQuestions = await Survey.find({
     join: {
       alias: "survey",
@@ -12,6 +13,8 @@ const batchQuestions = async (surveyIds: readonly number[]) => {
       },
     },
   });
+
+  console.log({ surveyQuestions });
 
   const surveyIdQuestions: { [surveyId: number]: Question[] } = {};
 

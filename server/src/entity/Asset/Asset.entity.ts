@@ -3,14 +3,13 @@ import {
   BaseEntity,
   Column,
   Entity,
-  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  RelationId,
 } from "typeorm";
 import { AssetCategory } from "./AssetCategory.entity";
-
-@ObjectType()
 @Entity()
+@ObjectType()
 export class Asset extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
@@ -56,7 +55,14 @@ export class Asset extends BaseEntity {
   @Column()
   languageCode: string;
 
-  @ManyToOne(() => AssetCategory)
-  @JoinColumn()
+  @Field(() => AssetCategory)
+  @ManyToOne(() => AssetCategory, (assetCategory) => assetCategory.assets)
   category: AssetCategory;
+  @RelationId((asset: Asset) => asset.category)
+  categoryId: number;
+
+  // @Field(() => AssetCategory)
+  // async cat(@Ctx() { assetsCategoryLoader }: Context): Promise<AssetCategory> {
+  //   return assetsCategoryLoader.load(this.id);
+  // }
 }

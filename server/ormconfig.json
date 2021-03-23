@@ -8,7 +8,7 @@
   "database": "compass-survey",
   "synchronize": true,
   "logging": true,
-  "entities": ["src/entity/*.*"],
+  "entities": ["src/entity/**/*.*"],
   "seeds": ["src/db/seeds/*{.ts,.js}"],
   "factories": ["src/db/factories/*{.ts,.js}"]
 }

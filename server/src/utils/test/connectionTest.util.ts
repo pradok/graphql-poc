@@ -7,6 +7,6 @@ export const connectionTest = (drop: boolean = false) => {
     database: "compass-survey-test",
     synchronize: drop,
     dropSchema: drop,
-    entities: ["src/entity/*.*"],
+    entities: ["src/entity/**/*.*"],
   });
 };

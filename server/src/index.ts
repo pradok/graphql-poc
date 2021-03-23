@@ -2,7 +2,7 @@ import { ApolloServer } from "apollo-server-express";
 import Express from "express";
 import "reflect-metadata";
 import { createConnection } from "typeorm";
-import { createSchema, questionsLoader } from "./utils";
+import { assetsCategoryLoader, createSchema, questionsLoader } from "./utils";
 
 // @Resolver()
 // class HelloResolver {
@@ -21,6 +21,7 @@ const app = async () => {
       req,
       res,
       questionsLoader: questionsLoader(),
+      assetsCategoryLoader: assetsCategoryLoader(),
     }),
   });
 
