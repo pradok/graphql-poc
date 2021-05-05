@@ -1,4 +1,4 @@
-# Compass Surveys test
+# Compass Surveys
 
 This is a full stack Typescript application using GraphQL (client) and React (sever).
 

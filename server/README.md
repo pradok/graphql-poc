@@ -1,4 +1,4 @@
-# Compass Survey Candidate Test
+# Compass Survey
 
 
 ### Available Scripts
